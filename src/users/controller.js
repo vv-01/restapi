@@ -20,6 +20,10 @@ const getUserById = (req, res) => {
       console.log(`error: ${error}`);
       throw error;
     }
+    if (results.rowCount === 0) {
+      res.send("User does not exist in the database");
+      return;
+    }
     res.status(200).json(results.rows);
   });
 };
